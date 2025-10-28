@@ -8,4 +8,4 @@ from .models import Post
 
 class PostList(generic.ListView):
     queryset = Post.objects.all()
-    template_name = "public_post.html"
+    template_name = "blog/public_post.html"
