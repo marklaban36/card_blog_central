@@ -1,0 +1,136 @@
+/* === Base Styles === */
+body, html {
+    font-family: 'Lato', 'Roboto', sans-serif;
+    background-color: #ed0808;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.main-bg {
+    background-color: #eb0909;
+}
+
+.dark-bg {
+    background-color: #343a40;
+}
+
+/* === Navbar === */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #0056b3;
+}
+
+.navbar-text h3 {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    color: #007bff !important;
+}
+
+/* === Footer === */
+.footer {
+    background-color: #343a40;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.footer i {
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer i:hover {
+    color: #00acc1;
+    transform: scale(1.2);
+}
+
+/* === Cards === */
+.card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.card-header {
+    font-weight: bold;
+    font-size: 1.1rem;
+    background-color: #00acc1;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.card:hover .card-header {
+    background-color: #0097a7;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.image-flash {
+    padding: 0.5rem;
+    background-color: #b2ebf2;
+    border-radius: 5px;
+    margin: 0.5rem 0;
+}
+
+.author {
+    font-weight: 500;
+    margin: 0;
+}
+
+/* === Post Link Hover === */
+.post-link {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+.post-link:hover {
+    color: #007bff;
+}
+
+/* === Pagination === */
+.pagination .page-link {
+    color: #007bff;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.pagination .page-link:hover {
+    background-color: #e3f2fd;
+}
+
+/* === Responsive Grid Fix === */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    .navbar-text h3 {
+        font-size: 1rem;
+    }
+}
