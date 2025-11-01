@@ -15,7 +15,11 @@ class Post(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
 
     # Relations
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="blog_posts")
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="blog_posts",
+    )
 
     # Content
     content = models.TextField()
@@ -39,12 +43,22 @@ class Post(models.Model):
     def get_excerpt(self, max_len=200):
         if self.excerpt:
             return self.excerpt
-        return (self.content[: max_len - 3] + "...") if len(self.content) > max_len else self.content
+        if len(self.content) > max_len:
+            return self.content[: max_len - 3] + "..."
+        return self.content
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="commenter")
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name="comments",
+    )
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="commenter",
+    )
     body = models.TextField()
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)

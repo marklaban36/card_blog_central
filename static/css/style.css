@@ -1,14 +1,14 @@
 /* === Base Styles === */
 body, html {
     font-family: 'Lato', 'Roboto', sans-serif;
-    background-color: #ed0808;
+    background-color: #f3eeee;
     color: #333;
     margin: 0;
     padding: 0;
 }
 
 .main-bg {
-    background-color: #eb0909;
+    background-color: #f2efef;
 }
 
 .dark-bg {
@@ -17,35 +17,53 @@ body, html {
 
 /* === Navbar === */
 .navbar {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+   box-shadow: 0 2px 20px rgb(14, 15, 14);
+
 }
+
+.navbar-custom {
+    background-color: #009583; /* or any color you want */
+}
+
 
 .navbar-brand {
     font-size: 1.8rem;
-    color: #007bff;
+    color: #0c0d0d;
     transition: color 0.3s ease;
 }
 
 .navbar-brand:hover {
-    color: #0056b3;
+    color: #ffffff;
 }
 
 .navbar-text h3 {
+    color: #0a0a0a;
     font-size: 1.2rem;
     font-weight: 300;
     margin-bottom: 0;
 }
 
-.nav-link.active {
-    font-weight: bold;
-    color: #007bff !important;
+.nav-link {
+    color: #0a0a0a;
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 0;
+    transition: color 0.3s ease;
 }
+
+.nav-link:hover,
+.nav-link.active {
+    color: #ee0606 !important;
+    font-weight: bold;
+}
+
 
 /* === Footer === */
 .footer {
-    background-color: #343a40;
-    color: white;
+    background-color: #009583;
     font-size: 0.9rem;
+    text-align: center;
+    box-shadow: 0 2px 20px rgb(14, 15, 14);
 }
 
 .footer i {
@@ -64,6 +82,7 @@ body, html {
     border: none;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #e0f7fa;
 }
 
 .card:hover {
@@ -101,30 +120,87 @@ body, html {
     margin: 0;
 }
 
-/* === Post Link Hover === */
-.post-link {
+/* === Post Card Hover Reveal === */
+.post-card {
+    background-color: #e0f7fa;
+    border-radius: 10px;
+    padding: 1rem;
+    transition: box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.post-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.post-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.post-card:hover .post-details {
+    max-height: 500px;
+    opacity: 1;
+}
+
+
+/* === Links === */
+a {
+    color: #0c0d0d;
     text-decoration: none;
-    color: inherit;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #f3f6f4;
+}
+
+/* === Post Link === */
+.post-link {
+    display: block;
     transition: color 0.3s ease;
 }
 
 .post-link:hover {
-    color: #007bff;
+    color: #4904f7;
+}
+
+/* === Buttons === */
+button,
+.btn {
+    background-color: #ffffff;
+    color: #ed0808;
+    border: 1px solid #ed0808;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+button:hover,
+.btn:hover {
+    background-color: #ed0808;
+    color: #ffffff;
+    border-color: #ffffff;
 }
 
 /* === Pagination === */
 .pagination .page-link {
-    color: #007bff;
+    color: #ed0808;
     border: none;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .pagination .page-link:hover {
-    background-color: #e3f2fd;
+    background-color: #ffffff;
+    color: #ed0808;
 }
 
-/* === Responsive Grid Fix === */
+/* === Responsive Fixes === */
 @media (max-width: 768px) {
     .card {
         margin-bottom: 1rem;
