@@ -1,8 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from .models import Post
-
-# Create your views here.
+from .forms import CommentForm
 
 
 class PostList(generic.ListView):
@@ -12,24 +11,26 @@ class PostList(generic.ListView):
 
 
 def post_detail(request, slug):
-    """
-    Display an individual :model:`blog.Post`.
+    post = get_object_or_404(Post, slug=slug, status=1)
+    comments = post.comments.filter(approved=True)
 
-    **Context**
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            form = CommentForm(request.POST)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.post = post
+                comment.author = request.user
+                comment.approved = True  # auto-approve for now
+                comment.save()
+                return redirect("post_detail", slug=post.slug)
+        else:
+            return redirect("login")  # redirect if not logged in
+    else:
+        form = CommentForm()
 
-    ``post``
-        An instance of :model:`blog.Post`.
-
-    **Template:**
-
-    :template:`blog/post_detail.html`
-    """
-
-    queryset = Post.objects.filter(status=1)
-    post = get_object_or_404(queryset, slug=slug)
-
-    return render(
-        request,
-        "blog/post_detail.html",
-        {"post": post},
-    )
+    return render(request, "blog/post_detail.html", {
+        "post": post,
+        "comments": comments,
+        "form": form,
+    })
