@@ -1,13 +1,13 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 {% load static %}
 
-<!-- Post Content -->
 <div class="masthead">
     <div class="container">
         <div class="row g-0">
             <div class="col-md-6 masthead-text">
+                <!-- Post title goes in these h1 tags -->
                 <h1 class="post-title">{{ post.title }}</h1>
+                <!-- Post author goes before the | the post's created date goes after -->
                 <p class="post-subtitle">{{ post.author }} | {{ post.created_on }}</p>
             </div>
         </div>
@@ -16,48 +16,16 @@
 
 <div class="container">
     <div class="row">
-        <div class="col card mb-4 mt-3 left top">
+        <div class="col card mb-4  mt-3 left  top">
             <div class="card-body">
-                <p class="card-text">{{ post.content|safe }}</p>
-            </div>
-        </div>
-    </div>
-
-    <!--Comments Section -->
-    <div class="row">
-        <div class="col card mb-4 mt-3 left top">
-            <div class="card-body">
-                <h3>Comments</h3>
-                {% if comments %}
-                    {% for comment in comments %}
-                    <div class="comment mb-3">
-                        <p><strong>{{ comment.author }}</strong> on {{ comment.created_on|date:"F j, Y" }}</p>
-                        <p>{{ comment.body }}</p>
-                    </div>
-                    {% endfor %}
-                {% else %}
-                    <p>No comments yet. Be the first to comment!</p>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-
-    <!--Comment Form -->
-    <div class="row">
-        <div class="col card mb-4 mt-3 left top">
-            <div class="card-body">
-                <h3>Leave a Comment</h3>
-                {% if user.is_authenticated %}
-                    <form method="post">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                {% else %}
-                    <p><a href="{% url 'login' %}">Log in</a> to leave a comment.</p>
-                {% endif %}
+                <!-- The post content goes inside the card-text. -->
+                <!-- Use the | safe filter inside the template tags -->
+                <p class="card-text">
+                    {{ post.content | safe }}
+                </p>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
+
+{% endblock content %}
