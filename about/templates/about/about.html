@@ -5,10 +5,10 @@
   <div class="row">
     <div class="col-4 text-center">
           {% if "placeholder" in about.profile_image.url %}
-      <img src="{% static 'images/screenshot 2025-11-02 101902.png' %}" width="75%"
+      <img src="{% static 'images/screenshot_2025-11-02_101902.png' %}" width="100%"
         alt="placeholder image" >
       {% else %}
-      <img src="{{ about.profile_image.url }}" width="75%"
+      <img src="{{ about.profile_image.url }}" width="100%"
         alt="{{ about.title }}">
       {% endif %} 
     </div>
