@@ -1,212 +1,233 @@
-/* === Base Styles === */
-body, html {
-    font-family: 'Lato', 'Roboto', sans-serif;
-    background-color: #f3eeee;
-    color: #333;
-    margin: 0;
-    padding: 0;
+/* === CSS Variables === */
+:root {
+  --primary-color: #854de8;
+  --accent-color: #ed0808;
+  --hover-color: #ee0606;
+  --light-bg: #e0f7fa;
+  --white: #ffffff;
+  --dark: #0c0d0d;
+  --gray-dark: #343a40;
+  --cyan: #00acc1;
+  --cyan-dark: #0097a7;
+  --text-muted: #0a0a0a;
+  --shadow: 0 2px 20px rgb(14, 15, 14);
+  --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* === Base Styles === */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100% !important;
+}
+
+body {
+  background-color: #F9FAFC;
+}
+
+a,
+.navbar-brand,
+.nav-link,
+.post-link,
+.footer i {
+  transition: color 0.3s ease;
+}
+
+a {
+  color: var(--dark);
+  text-decoration: none;
+}
+a:hover {
+  color: #f3f6f4;
+}
+
+/* === Backgrounds === */
 .main-bg {
-    background-color: #f2efef;
+  background: url('../images/3109743.jpg') center center / cover no-repeat fixed;
+  background-color: #f2efef;
 }
 
 .dark-bg {
-    background-color: #343a40;
+  background-color: var(--gray-dark);
 }
 
 /* === Navbar === */
 .navbar {
-   box-shadow: 0 2px 20px rgb(14, 15, 14);
-
+  box-shadow: var(--shadow);
 }
 
 .navbar-custom {
-    background-color: #009583; /* or any color you want */
+  background-color: var(--primary-color);
 }
-
 
 .navbar-brand {
-    font-size: 1.8rem;
-    color: #0c0d0d;
-    transition: color 0.3s ease;
+  font-size: 1.8rem;
+  color: var(--dark);
 }
-
 .navbar-brand:hover {
-    color: #ffffff;
+  color: var(--white);
 }
 
-.navbar-text h3 {
-    color: #0a0a0a;
-    font-size: 1.2rem;
-    font-weight: 300;
-    margin-bottom: 0;
-}
-
+.navbar-text h3,
 .nav-link {
-    color: #0a0a0a;
-    font-size: 1.2rem;
-    font-weight: 300;
-    margin-bottom: 0;
-    transition: color 0.3s ease;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 0;
 }
-
 .nav-link:hover,
 .nav-link.active {
-    color: #ee0606 !important;
-    font-weight: bold;
+  color: var(--hover-color) !important;
+  font-weight: bold;
 }
-
 
 /* === Footer === */
 .footer {
-    background-color: #009583;
-    font-size: 0.9rem;
-    text-align: center;
-    box-shadow: 0 2px 20px rgb(14, 15, 14);
+  background-color: var(--primary-color);
+  font-size: 0.9rem;
+  text-align: center;
+  box-shadow: var(--shadow);
 }
-
 .footer i {
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: color 0.3s ease, transform 0.3s ease;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
-
 .footer i:hover {
-    color: #00acc1;
-    transform: scale(1.2);
+  color: var(--cyan);
+  transform: scale(1.2);
 }
 
 /* === Cards === */
-.card {
-    border: none;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #e0f7fa;
+.card,
+.post-card {
+  background-color: var(--light-bg);
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+.card {
+  border: none;
+}
+.card:hover,
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--hover-shadow);
 }
 
 .card-header {
-    font-weight: bold;
-    font-size: 1.1rem;
-    background-color: #00acc1;
-    color: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    transition: background-color 0.3s ease;
+  font-weight: bold;
+  font-size: 1.1rem;
+  background-color: var(--cyan);
+  color: var(--white);
+  border-radius: 10px 10px 0 0;
+  transition: background-color 0.3s ease;
 }
-
 .card:hover .card-header {
-    background-color: #0097a7;
+  background-color: var(--cyan-dark);
 }
 
 .card-body {
-    padding: 1rem;
+  padding: 1rem;
 }
 
 .image-flash {
-    padding: 0.5rem;
-    background-color: #b2ebf2;
-    border-radius: 5px;
-    margin: 0.5rem 0;
+  padding: 0.5rem;
+  background-color: #b2ebf2;
+  border-radius: 5px;
+  margin: 0.5rem 0;
 }
 
 .author {
-    font-weight: 500;
-    margin: 0;
+  font-weight: 500;
+  margin: 0;
 }
 
-/* === Post Card Hover Reveal === */
+/* === Post Details Reveal === */
 .post-card {
-    background-color: #e0f7fa;
-    border-radius: 10px;
-    padding: 1rem;
-    transition: box-shadow 0.3s ease;
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
+  padding: 1rem;
 }
-
-.post-card:hover {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
 .post-details {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease, opacity 0.5s ease;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
 }
-
 .post-card:hover .post-details {
-    max-height: 500px;
-    opacity: 1;
-}
-
-
-/* === Links === */
-a {
-    color: #0c0d0d;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: #f3f6f4;
-}
-
-/* === Post Link === */
-.post-link {
-    display: block;
-    transition: color 0.3s ease;
-}
-
-.post-link:hover {
-    color: #4904f7;
+  max-height: 500px;
+  opacity: 1;
 }
 
 /* === Buttons === */
 button,
 .btn {
-    background-color: #ffffff;
-    color: #ed0808;
-    border: 1px solid #ed0808;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  background-color: var(--white);
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
-
 button:hover,
 .btn:hover {
-    background-color: #ed0808;
-    color: #ffffff;
-    border-color: #ffffff;
+  background-color: var(--accent-color);
+  color: var(--white);
+  border-color: var(--white);
 }
 
 /* === Pagination === */
 .pagination .page-link {
-    color: #ed0808;
-    border: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  color: var(--accent-color);
+  border: none;
+  font-weight: bold;
 }
-
 .pagination .page-link:hover {
-    background-color: #ffffff;
-    color: #ed0808;
+  background-color: var(--white);
+  color: var(--accent-color);
 }
 
-/* === Responsive Fixes === */
+/* === Responsive === */
 @media (max-width: 768px) {
-    .card {
-        margin-bottom: 1rem;
-    }
+  .card {
+    margin-bottom: 1rem;
+  }
+  .navbar-text h3 {
+    font-size: 1rem;
+  }
+}
 
-    .navbar-text h3 {
-        font-size: 1rem;
-    }
+/* === Utility Classes === */
+.text-end {
+  color: var(--accent-color);
+}
+.big-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* === Form Labels === */
+.form-check-label,
+.form-label,
+.fa-comments {
+  color: var(--white);
+  font-weight: 500;
+}
+
+/* === Messages === */
+#msg,
+#msg-error {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+}
+#msg {
+  box-shadow: 0 4px 6px rgba(84, 83, 83, 0.1);
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+#msg-error {
+  border-left: 5px solid #dc3545;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f8d7da;
+  color: #842029;
 }
