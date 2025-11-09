@@ -2,6 +2,7 @@
 
 {% url 'home' as home_url %}
 {% url 'about' as about_url %}
+{% url 'create_post' as create_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
@@ -59,8 +60,8 @@
                     </li>
 					{% if user.is_authenticated %}
                     <li class="nav-item">
-                     <a class="nav-link {% if request.path == '/create/' %}active{% endif %}" aria-current="page"
-                      href="{% url 'create_post' %}">Create Post</a>
+                    <a class="nav-link {% if request.path == create_url %}active{% endif %}" aria-current="page"
+                       href="{{ create_url }}">Create Post</a>
                     </li>
                     {% endif %}
                     {% if user.is_authenticated %}

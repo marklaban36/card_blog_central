@@ -8,10 +8,12 @@ from cloudinary.uploader import destroy
 from .models import Post, Comment
 from .forms import CommentForm, PostForm
 
+
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1)
     template_name = "blog/public_post.html"
     paginate_by = 6
+
 
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug=slug, status=1)
@@ -36,6 +38,7 @@ def post_detail(request, slug):
         "comment_form": comment_form,
     })
 
+
 @login_required
 def create_post(request):
     form = PostForm(request.POST or None, request.FILES or None)
@@ -47,6 +50,7 @@ def create_post(request):
         return HttpResponseRedirect(reverse('post_detail', args=[post.slug]))
     return render(request, 'blog/post_form.html', {'form': form})
 
+
 @login_required
 def edit_post(request, slug):
     post = get_object_or_404(Post, slug=slug, author=request.user)
@@ -57,6 +61,7 @@ def edit_post(request, slug):
         return HttpResponseRedirect(reverse('post_detail', args=[post.slug]))
     return render(request, 'blog/post_form.html', {'form': form})
 
+
 @login_required
 def delete_post(request, slug):
     post = get_object_or_404(Post, slug=slug, author=request.user)
@@ -65,6 +70,7 @@ def delete_post(request, slug):
         messages.success(request, "Post deleted successfully!")
         return HttpResponseRedirect(reverse('home'))
     return render(request, 'blog/post_confirm_delete.html', {'post': post})
+
 
 @login_required
 def delete_featured_image(request, slug):
@@ -77,6 +83,7 @@ def delete_featured_image(request, slug):
     else:
         messages.warning(request, "No image to delete.")
     return HttpResponseRedirect(reverse('edit_post', args=[slug]))
+
 
 @login_required
 def comment_edit(request, slug, comment_id):
