@@ -45,9 +45,13 @@ class Comment(models.Model):
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        ordering = ["created_on"]
 
-    def __str__(self):
-        # shorten representation to avoid long lines
-        return f"Comment by {self.author}"
+class Meta:
+    ordering = ["created_on"]
+
+
+def __str__(self):
+    try:
+        return f"Comment by {self.author.username}"
+    except Exception:
+        return "Comment by Unknown"
